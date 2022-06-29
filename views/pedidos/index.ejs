@@ -1,0 +1,47 @@
+<%- include ../layouts/cabecera.ejs%> 
+
+   
+        </br>
+        </br>
+        </br>
+
+        <a href="/pedidos/crear" class="btn btn-primary" type="button">Crear pedido</a>
+        </br>
+        </br>
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let pedido = 0; pedido < pedidos.length; pedido++ ) { %>
+                    <tr>
+                        <td><%=pedidos[pedido].Id_Pedido%></td>
+                        <td><%=pedidos[pedido].Nombre%></td>
+                        <td><%=pedidos[pedido].Descripcion%></td>
+                        <td>
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="get" action="/pedidos/editar/<%=pedidos[pedido].Id_Pedido%>">
+                                    <button class="btn btn-warning" type="submit">Editar</button>
+                                </form> 
+                            </div>   
+                            |
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="post" action="/pedidos/eliminar/<%=pedidos[pedido].Id_Pedido%>">
+                                    <button class="btn btn-danger" type="submit">Borrar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+                
+            </tbody>
+        </table>
+
+
+        <%- include ../layouts/pie.ejs%> 
+  
